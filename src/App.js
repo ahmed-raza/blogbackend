@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Container, Header, Menu, MenuItem } from "semantic-ui-react";
+import { getPosts } from "./utils/posts";
+import Posts from "./components/Posts";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    getPosts().then((data) => setPosts(data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Menu>
+        <Container>
+          <MenuItem key={1} link={true}>
+            Login
+          </MenuItem>
+          <MenuItem key={2} link={true}>
+            Register
+          </MenuItem>
+        </Container>
+      </Menu>
+      <Container text>
+        <Header as="h2">Welcome to the Blog</Header>
+        {posts && <Posts posts={posts}></Posts>}
+      </Container>
+    </>
   );
 }
 
