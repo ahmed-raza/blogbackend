@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import axios from "../api/axios";
 
 export function getAccessToken() {
@@ -15,6 +16,14 @@ export function removeAccessToken() {
   if (localStorage.getItem("accessToken")) {
     localStorage.removeItem("accessToken");
   }
+}
+
+export function checkAuthLoader() {
+  const token = getAccessToken();
+  if (!token) {
+    return redirect("/");
+  }
+  return null;
 }
 
 export async function register(formdata) {
