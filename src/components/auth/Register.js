@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Button, Form, Input, Loader, Message } from "semantic-ui-react";
 import { register } from "../../utils/auth";
 
-const Register = ({ onRegister }) => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [first_name, setFirstName] = useState("");
