@@ -1,4 +1,5 @@
-### Setup
+# Django Setup
+### Instructions
 
 - Clone the project
 - Make local django env `$ python3 -m venv env`
@@ -7,3 +8,10 @@
 - Run migrations `$ python3 manage.py migrate`
 - Create superuser `$ python3 manage.py createsuperuser`
 - Start app `$ python3 manage.py runserver`
+
+# React Setup
+### Instructions
+- Clone the project
+- Switch to `frontend` branch
+- `npm install`
+- `npm start`
