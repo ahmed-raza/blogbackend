@@ -5,7 +5,7 @@ import { Grid } from "semantic-ui-react";
 const Posts = ({ posts }) => {
   return (
     <div>
-      <Grid columns={3} divided>
+      <Grid columns={4}>
         <Grid.Row>
           {posts &&
             posts.map((post) => {
