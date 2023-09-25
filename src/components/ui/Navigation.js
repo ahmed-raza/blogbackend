@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Menu, MenuItem, Modal } from "semantic-ui-react";
+import { Container, Dropdown, Menu, MenuItem, Modal } from "semantic-ui-react";
 import { getAccessToken } from "../../utils/auth";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
@@ -39,12 +39,16 @@ const Navigation = () => {
           </MenuItem>
           {accessToken ? (
             <>
-              <MenuItem key={1} as={Link} to="/my-account">
-                {name}
-              </MenuItem>
-              <MenuItem key={2} link={true} onClick={handleLogout}>
-                Logout
-              </MenuItem>
+              <Dropdown text={name} pointing className="link item">
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/my-account" key={1}>
+                    My Account
+                  </Dropdown.Item>
+                  <Dropdown.Item key={2} onClick={handleLogout}>
+                    Logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </>
           ) : (
             <>
