@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Form, Header, Input } from "semantic-ui-react";
 import { getUser, updateUser } from "../../utils/user";
+import Messages from "../ui/Messages";
 
 const Profile = () => {
   const testRef = useRef();
@@ -10,6 +11,7 @@ const Profile = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getUser().then((data) => {
@@ -24,6 +26,7 @@ const Profile = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     setErrors([]);
+    setMessage("");
     const formData = new FormData();
     formData.append("username", username);
     formData.append("first_name", first_name);
@@ -33,12 +36,16 @@ const Profile = () => {
       if (status === 400 || status === 401) {
         setErrors(data);
       }
+      if (status === 200) {
+        setMessage(data.message);
+      }
     });
   };
 
   return (
     <>
       <Header as="h1">My Account</Header>
+      <Messages message={message} show={message && true} />
       <Form ref={testRef}>
         <Form.Field
           error={errors.username}
