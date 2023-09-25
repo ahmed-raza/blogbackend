@@ -13,7 +13,7 @@ const Main = () => {
   return (
     <>
       <Container>
-        <Header as="h2">Welcome to the Blog</Header>
+        <Header as="h1">Welcome to the Blog</Header>
         {posts && <Posts posts={posts}></Posts>}
       </Container>
     </>
