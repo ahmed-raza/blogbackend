@@ -18,7 +18,7 @@ class UpdateUserView(APIView):
             serializer = self.serializer_class(user, request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response({'message': 'Yolo'})
+                return Response({'message': 'Your changes have been saved.'})
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
