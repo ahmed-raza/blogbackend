@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView
@@ -18,4 +20,4 @@ urlpatterns = [
     path('api/user', user_view, name='api-user'),
     path('api/user/<int:pk>/update', update_user_view, name='api-user-update'),
     path('api/posts', posts_view, name='api-posts')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
