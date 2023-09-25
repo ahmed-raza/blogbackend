@@ -18,3 +18,24 @@ export async function getUser() {
     });
   return await user;
 }
+
+export async function updateUser(userId, formData) {
+  const token = getAccessToken();
+  const user = await axios
+    .put("/user/" + userId + "/update", formData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log(response);
+      return response;
+    })
+    .catch(({ response }) => {
+      console.log(response);
+      return response;
+    });
+  return await user;
+}
